@@ -4,14 +4,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:gravity="center">
-        
+    <!--登录框-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:background="@color/white"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="140dp">
+        android:layout_marginBottom="0dp">
 
         <TextView
             style="@style/Title"
@@ -46,7 +46,7 @@
             android:textSize="14sp"
             android:layout_marginLeft="32dp"
             android:hint="用户名"
-            android:background="null" />
+            android:background="@null" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                 android:textSize="14sp"
                 android:layout_marginLeft="32dp"
                 android:hint="密码"
-                android:background="null" />
+                android:background="@null" />
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -91,6 +91,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:id="@+id/login_btn"
             android:layout_marginTop="56dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -99,8 +100,7 @@
             android:text="登录"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:shadowRadius="10dp"/>
+            android:textSize="18sp" />
 
 
     </RelativeLayout>

@@ -8,7 +8,7 @@
     <color name="text_color">#cc353a41</color>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -29,11 +29,6 @@
     <style name="InputText">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/text_color</item>
-    </style>
-    
-    <style name="AppTheme.NoBar">
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
     </style>
 
 </resources>
