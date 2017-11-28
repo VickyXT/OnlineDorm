@@ -22,16 +22,179 @@
         android:textSize="24sp"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/user_information"
-        android:layout_marginBottom="20dp"/>
+        android:layout_above="@id/user_square"
+        android:layout_marginBottom="40dp"/>
 
-    <!--用户信息框-->
+    <!--用户方块-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="340dp"
         android:background="#f6f9fc"
         android:layout_alignParentBottom="true"
-        android:id="@+id/user_information">
+        android:id="@+id/user_square">
+
+        <!--用户信息展示-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/square"
+            android:elevation="2dp"
+            android:weightSum="3">
+            <!--性别-->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/square_sex"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/user_sex"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:textStyle="bold"
+                    android:text="男"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="#80353a41"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginBottom="20dp"
+                    android:textStyle="bold"
+                    android:text="性别"/>
+
+            </RelativeLayout>
+
+            <!--学号-->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/square_sex"
+                android:id="@+id/square_student_code"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:background="#dce6f0"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/student_code"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:textStyle="bold"
+                    android:text="170121xxxx"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="#80353a41"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginBottom="20dp"
+                    android:textStyle="bold"
+                    android:text="学号"/>
+
+            </RelativeLayout>
+
+            <!--校验码-->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/square_student_code"
+                android:id="@+id/square_check_code"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:background="#dce6f0"
+                    android:layout_centerVertical="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/check_code"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:textStyle="bold"
+                    android:text="abc123"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="#80353a41"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginBottom="20dp"
+                    android:textStyle="bold"
+                    android:text="校验码"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dce6f0"
+            android:layout_above="@id/menu"
+            android:layout_marginBottom="1dp"/>
+        
+        <!--导航栏-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/menu"
+            android:background="@color/white"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/home_btn">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/home"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/user_btn">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/myActive"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
 
     </RelativeLayout>
 </RelativeLayout>
