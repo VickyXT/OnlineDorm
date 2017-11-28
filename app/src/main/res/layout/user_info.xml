@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:gravity="center">
+
+    <!--用户头像-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/avatar"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/user_image"/>
+
+    <!--用户名-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nmchgx"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/user_information"
+        android:layout_marginBottom="20dp"/>
+
+    <!--用户信息框-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:background="#f6f9fc"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/user_information">
+
+    </RelativeLayout>
+</RelativeLayout>
