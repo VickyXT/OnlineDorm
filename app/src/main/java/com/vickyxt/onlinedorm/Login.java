@@ -1,35 +1,86 @@
 package com.vickyxt.onlinedorm;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vickyxt.util.NetUtil;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Created by VickyXT on 2017/11/27.
  */
 
-public class Login extends Activity {
+public class Login extends Activity implements View.OnClickListener {
 
-    private ImageView LoginBtn;
+    private static final int LOGIN_REQUEST = 1;
+    private Button LoginBtn;
+    private EditText UserName = null;
+    private EditText PassWord = null;
+
+    private TextView loginTitle;
+    private ImageView userImg, passwordImg;
+
+    private Handler lHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            switch (msg.what) {
+                case LOGIN_REQUEST:
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+    void initView(){
+        loginTitle = (TextView)findViewById(R.id.login_title);
+        userImg = (ImageView)findViewById(R.id.user_image);
+        passwordImg = (ImageView)findViewById(R.id.password_image);
+    }
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.login);
+        UserName = (EditText)findViewById(R.id.username);
+        PassWord = (EditText)findViewById(R.id.password);
+        LoginBtn = (Button)findViewById(R.id.login_btn);
+        LoginBtn.setOnClickListener(this);
 
         if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE){
-            Log.d("myWeather","网络ok");
+            Log.d("OnlineDorm","网络ok");
             Toast.makeText(Login.this,"网络ok！",Toast.LENGTH_LONG).show();
         }
         else{
-            Log.d("myWeather","网络挂了");
+            Log.d("OnlineDorm","网络挂了");
             Toast.makeText(Login.this,"网络挂了",Toast.LENGTH_LONG).show();
         }
 
+        initView();
+
     }
+
+    @Override
+    public void onClick(View view){
+
+        if (view.getId() == R.id.login_btn){
+            Intent i = new Intent(this, SelectDorm.class);
+            startActivityForResult(i,1);
+        }
+    }
+
 }

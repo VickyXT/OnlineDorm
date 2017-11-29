@@ -45,8 +45,8 @@
             android:layout_height="match_parent"
             android:textSize="14sp"
             android:layout_marginLeft="32dp"
-            android:hint="用户名"
-            android:background="@null" />
+            android:id="@+id/username"
+            android:hint="用户名" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -78,8 +78,9 @@
                 android:layout_height="match_parent"
                 android:textSize="14sp"
                 android:layout_marginLeft="32dp"
-                android:hint="密码"
-                android:background="@null" />
+                android:id="@+id/password"
+                android:hint="密码" />
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

@@ -41,6 +41,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/square"
+            android:id="@+id/user_info"
             android:elevation="2dp"
             android:weightSum="3">
             <!--性别-->
@@ -53,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/user_sex"
-                    android:textColor="@color/title_color"
+                    android:textColor="@color/text_color"
                     android:textSize="14sp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
@@ -92,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/student_code"
-                    android:textColor="@color/title_color"
+                    android:textColor="@color/text_color"
                     android:textSize="14sp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
@@ -130,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/check_code"
-                    android:textColor="@color/title_color"
+                    android:textColor="@color/text_color"
                     android:textSize="14sp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
@@ -153,6 +154,83 @@
 
         </LinearLayout>
 
+        <!--宿舍信息展示-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/square"
+            android:elevation="2dp"
+            android:layout_below="@id/user_info"
+            android:weightSum="3">
+            <!--房屋图标-->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/dorm"/>
+
+            </RelativeLayout>
+
+            <!--宿舍楼-->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/square_sex"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:background="#dce6f0"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/student_building"
+                    android:textColor="#353a41"
+                    android:textSize="16sp"
+                    android:layout_centerInParent="true"
+                    android:textStyle="bold"
+                    android:text="14号楼"/>
+
+            </RelativeLayout>
+
+            <!--宿舍号-->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/square_student_code"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:background="#dce6f0"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/student_room"
+                    android:textColor="#353a41"
+                    android:textSize="16sp"
+                    android:layout_centerInParent="true"
+                    android:textStyle="bold"
+                    android:text="1402"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!--分割线-->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
