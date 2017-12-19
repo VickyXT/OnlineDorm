@@ -7,9 +7,9 @@
 
     <!--用户头像-->
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/avatar"
         android:layout_centerHorizontal="true"
         android:id="@+id/user_image"/>
@@ -21,16 +21,17 @@
         android:text="nmchgx"
         android:textSize="24sp"
         android:textColor="@color/white"
+        android:layout_below="@+id/user_image"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/user_square"
-        android:layout_marginBottom="40dp"/>
+        android:layout_marginTop="20dp"/>
 
     <!--用户方块-->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="340dp"
+        android:layout_height="wrap_content"
         android:background="#f6f9fc"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="280dp"
         android:id="@+id/user_square">
 
         <!--用户信息展示-->
@@ -54,23 +55,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/user_sex"
-                    android:textColor="@color/text_color"
-                    android:textSize="14sp"
-                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="40dp"
-                    android:textStyle="bold"
+                    style="@style/InfoText"
                     android:text="男"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10sp"
-                    android:textColor="#80353a41"
-                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="45dp"
                     android:layout_marginBottom="20dp"
-                    android:textStyle="bold"
+                    style="@style/InfoLabel"
                     android:text="性别"/>
 
             </RelativeLayout>
@@ -90,26 +85,20 @@
                     android:layout_centerVertical="true" />
 
                 <TextView
+                    android:id="@+id/student_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/student_code"
-                    android:textColor="@color/text_color"
-                    android:textSize="14sp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="40dp"
-                    android:textStyle="bold"
-                    android:text="170121xxxx"/>
+                    android:layout_marginTop="20dp"
+                    style="@style/InfoText"
+                    android:text="170121xxxx" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10sp"
-                    android:textColor="#80353a41"
-                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="45dp"
                     android:layout_marginBottom="20dp"
-                    android:textStyle="bold"
+                    style="@style/InfoLabel"
                     android:text="学号"/>
 
             </RelativeLayout>
@@ -131,23 +120,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/check_code"
-                    android:textColor="@color/text_color"
-                    android:textSize="14sp"
-                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="40dp"
-                    android:textStyle="bold"
+                    style="@style/InfoText"
                     android:text="abc123"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10sp"
-                    android:textColor="#80353a41"
-                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="45dp"
                     android:layout_marginBottom="20dp"
-                    android:textStyle="bold"
+                    style="@style/InfoLabel"
                     android:text="校验码"/>
 
             </RelativeLayout>
@@ -195,10 +178,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/student_building"
-                    android:textColor="#353a41"
-                    android:textSize="16sp"
-                    android:layout_centerInParent="true"
-                    android:textStyle="bold"
+                    style="@style/DormText"
                     android:text="14号楼"/>
 
             </RelativeLayout>
@@ -220,23 +200,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/student_room"
-                    android:textColor="#353a41"
-                    android:textSize="16sp"
-                    android:layout_centerInParent="true"
-                    android:textStyle="bold"
+                    style="@style/DormText"
                     android:text="1402"/>
 
             </RelativeLayout>
 
         </LinearLayout>
-
-        <!--分割线-->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dce6f0"
-            android:layout_above="@id/menu"
-            android:layout_marginBottom="1dp"/>
         
         <!--导航栏-->
         <LinearLayout
@@ -266,13 +235,18 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/myActive"
+                    android:src="@drawable/my_active"
                     android:layout_centerInParent="true"/>
             </RelativeLayout>
-
-
-
         </LinearLayout>
+
+        <!--分割线-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dce6f0"
+            android:layout_above="@id/menu"
+            android:layout_marginBottom="1dp"/>
 
     </RelativeLayout>
 </RelativeLayout>
