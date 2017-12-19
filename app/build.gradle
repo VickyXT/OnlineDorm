@@ -28,4 +28,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
     compile 'com.squareup.okio:okio:1.13.0'
+    compile 'me.majiajie:pager-bottom-tab-strip:2.2.5'
 }

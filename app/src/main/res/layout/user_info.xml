@@ -27,111 +27,114 @@
 
     <!--用户方块-->
     <RelativeLayout
+        android:id="@+id/user_square"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#f6f9fc"
+        android:layout_height="300dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="280dp"
-        android:id="@+id/user_square">
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="40dp"
+        android:background="#f6f9fc">
 
         <!--用户信息展示-->
         <LinearLayout
+            android:id="@+id/user_info"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/square"
-            android:id="@+id/user_info"
             android:elevation="2dp"
             android:weightSum="3">
             <!--性别-->
             <RelativeLayout
+                android:id="@+id/square_sex"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/square_sex"
                 android:layout_weight="1">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/user_sex"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="40dp"
-                    style="@style/InfoText"
-                    android:text="男"/>
 
                 <TextView
+                    android:id="@+id/user_sex"
+                    style="@style/InfoText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="45dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginTop="20dp"
+                    android:text="男" />
+
+                <TextView
                     style="@style/InfoLabel"
-                    android:text="性别"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="45dp"
+                    android:text="性别" />
 
             </RelativeLayout>
 
             <!--学号-->
             <RelativeLayout
+                android:id="@+id/square_student_code"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/square_sex"
-                android:id="@+id/square_student_code"
                 android:layout_weight="1">
 
                 <ImageView
                     android:layout_width="1dp"
                     android:layout_height="20dp"
-                    android:background="#dce6f0"
-                    android:layout_centerVertical="true" />
+                    android:layout_centerVertical="true"
+                    android:background="#dce6f0" />
 
                 <TextView
                     android:id="@+id/student_code"
+                    style="@style/InfoText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="40dp"
                     android:layout_marginTop="20dp"
-                    style="@style/InfoText"
                     android:text="170121xxxx" />
 
                 <TextView
+                    style="@style/InfoLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="45dp"
                     android:layout_marginBottom="20dp"
-                    style="@style/InfoLabel"
-                    android:text="学号"/>
+                    android:layout_marginTop="45dp"
+                    android:text="学号" />
 
             </RelativeLayout>
 
             <!--校验码-->
             <RelativeLayout
+                android:id="@+id/square_check_code"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/square_student_code"
-                android:id="@+id/square_check_code"
                 android:layout_weight="1">
 
                 <ImageView
                     android:layout_width="1dp"
                     android:layout_height="20dp"
-                    android:background="#dce6f0"
-                    android:layout_centerVertical="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/check_code"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="40dp"
-                    style="@style/InfoText"
-                    android:text="abc123"/>
+                    android:layout_centerVertical="true"
+                    android:background="#dce6f0" />
 
                 <TextView
+                    android:id="@+id/check_code"
+                    style="@style/InfoText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="45dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginTop="20dp"
+                    android:text="abc123" />
+
+                <TextView
                     style="@style/InfoLabel"
-                    android:text="校验码"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="45dp"
+                    android:text="校验码" />
 
             </RelativeLayout>
 
@@ -141,23 +144,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_below="@id/user_info"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/square"
             android:elevation="2dp"
-            android:layout_below="@id/user_info"
             android:weightSum="3">
             <!--房屋图标-->
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/dorm"/>
+                    android:src="@drawable/dorm" />
 
             </RelativeLayout>
 
@@ -171,15 +175,15 @@
                 <ImageView
                     android:layout_width="1dp"
                     android:layout_height="20dp"
-                    android:background="#dce6f0"
-                    android:layout_centerVertical="true" />
+                    android:layout_centerVertical="true"
+                    android:background="#dce6f0" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/student_building"
                     style="@style/DormText"
-                    android:text="14号楼"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="14号楼" />
 
             </RelativeLayout>
 
@@ -193,60 +197,69 @@
                 <ImageView
                     android:layout_width="1dp"
                     android:layout_height="20dp"
-                    android:background="#dce6f0"
-                    android:layout_centerVertical="true" />
+                    android:layout_centerVertical="true"
+                    android:background="#dce6f0" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/student_room"
                     style="@style/DormText"
-                    android:text="1402"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1402" />
 
             </RelativeLayout>
 
         </LinearLayout>
-        
-        <!--导航栏-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/menu"
-            android:background="@color/white"
-            android:weightSum="2">
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/home_btn">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/home"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/user_btn">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/my_active"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-        </LinearLayout>
+        <!--&lt;!&ndash;导航栏&ndash;&gt;-->
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="56dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:id="@+id/menu"-->
+        <!--android:background="@color/white"-->
+        <!--android:weightSum="2">-->
 
-        <!--分割线-->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dce6f0"
-            android:layout_above="@id/menu"
-            android:layout_marginBottom="1dp"/>
+        <!--<RelativeLayout-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:id="@+id/home_btn">-->
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/home"-->
+        <!--android:layout_centerInParent="true"/>-->
+        <!--</RelativeLayout>-->
+        <!--<RelativeLayout-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:id="@+id/user_btn">-->
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/my_active"-->
+        <!--android:layout_centerInParent="true"/>-->
+        <!--</RelativeLayout>-->
+        <!--</LinearLayout>-->
+
+        <!--&lt;!&ndash;分割线&ndash;&gt;-->
+        <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#dce6f0"-->
+        <!--android:layout_above="@id/menu"-->
+        <!--android:layout_marginBottom="1dp"/>-->
 
     </RelativeLayout>
+
+    <me.majiajie.pagerbottomtabstrip.PageNavigationView
+        android:id="@+id/tab"
+        android:elevation="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFF"
+        />
 </RelativeLayout>
