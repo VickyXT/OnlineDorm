@@ -71,13 +71,17 @@ public class Login extends Activity implements View.OnClickListener {
         }
 
         initView();
-
     }
 
     @Override
     public void onClick(View view){
 
         if (view.getId() == R.id.login_btn){
+            // test method
+            Method method = new Method();
+            String username = "1301210899";
+            String password = "1301210899";
+            method.Login(username, password);
             Intent i = new Intent(this, SelectDorm.class);
             startActivityForResult(i,1);
         }
