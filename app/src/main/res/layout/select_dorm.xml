@@ -4,10 +4,12 @@
     android:layout_height="match_parent"
     android:background="#f6f9fc">
 
+    <!--背景及标题-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:id="@+id/select_bg">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -37,6 +39,98 @@
 
     </RelativeLayout>
 
+    <!--单人或多人-->
+    <LinearLayout
+        android:id="@+id/user_info"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_below="@id/select_bg"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/square"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:weightSum="2">
+        <!--单人-->
+        <RelativeLayout
+            android:id="@+id/single_choose"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/single_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/girl"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="单人选择"
+                android:textSize="16sp"
+                android:textColor="@color/title_color"
+                android:layout_toRightOf="@id/single_img"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_right"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="304dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <!--多人-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="290dp"
+                android:layout_height="1dp"
+                android:background="#dce6f0"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:id="@+id/many_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/girls"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="多人选择"
+                android:textSize="16sp"
+                android:textColor="@color/title_color"
+                android:layout_toRightOf="@id/many_img"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_right"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="304dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 
+    <me.majiajie.pagerbottomtabstrip.PageNavigationView
+        android:id="@+id/tab"
+        android:elevation="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFF"
+        />
 </RelativeLayout>

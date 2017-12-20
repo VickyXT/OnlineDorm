@@ -17,7 +17,7 @@ public class SelectDorm extends Activity implements View.OnClickListener {
 
 
     void initView(){
-        setContentView(R.layout.user_info);
+        setContentView(R.layout.select_dorm);
         PageNavigationView tab = (PageNavigationView) findViewById(R.id.tab);
 
         NavigationController navigationController = tab.material()

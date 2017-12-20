@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#f6f9fc">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/result_img"
+        android:src="@drawable/success"
+        android:layout_marginTop="180dp"
+        android:layout_marginBottom="200dp"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/result"
+        android:text="成功"
+        android:textSize="24sp"
+        android:textColor="@color/title_color"
+        android:layout_below="@id/result_img"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/result_tip"
+        android:text="请您报道当天凭录取通知书
+到对应宿舍楼前办理入住"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
