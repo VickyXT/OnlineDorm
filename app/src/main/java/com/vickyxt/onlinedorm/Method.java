@@ -4,6 +4,9 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.security.acl.Group;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -11,12 +14,16 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import javax.security.auth.callback.Callback;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 
 /**
  * Created by VickyXT on 2017/12/18.
@@ -62,7 +69,7 @@ public class Method {
         }
     }
 
-    public void getDetail(String stuid){
+    public void getDetail(String stuid, final MyCallback callback){
         try {
             String url = baseUrl + "getDetail";
             String parameter = "?stuid=" + stuid;
@@ -87,11 +94,21 @@ public class Method {
                 public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
                     // 注：该回调是子线程，非主线程
                     Log.d(TAG,"callback thread id is "+Thread.currentThread().getId());
-                    Log.d(TAG,response.body().string());
+                    String json = response.body().string();
+                    Log.d(TAG,json);
+                    HashMap<String,String> map = com.alibaba.fastjson.JSON.parseObject(json, new TypeReference<HashMap<String,String>>() {});
+                    String errcode = (String) map.get("errcode");
+                    if (errcode.equals("0")) {
+                        HashMap<String,String> data = com.alibaba.fastjson.JSON.parseObject(map.get("data"), new TypeReference<HashMap<String,String>>() {});
+                        callback.onSuccess(data);
+                    } else {
+                        callback.onError(errcode);
+                    }
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
+            callback.onError("请求失败");
         }
     }
 

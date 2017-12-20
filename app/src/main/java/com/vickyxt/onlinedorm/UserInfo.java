@@ -6,20 +6,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import java.util.HashMap;
+
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageNavigationView;
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
-
 /**
- * Created by VickyXT on 2017/11/29.
+ * Created by nmchgx on 2017/12/20.
  */
 
-public class SelectDorm extends Activity implements View.OnClickListener {
+public class UserInfo extends Activity implements View.OnClickListener {
 
 
     void initView(){
-        setContentView(R.layout.select_dorm);
+        setContentView(R.layout.user_info);
         PageNavigationView tab = (PageNavigationView) findViewById(R.id.tab);
 
         NavigationController navigationController = tab.material()
@@ -27,14 +28,14 @@ public class SelectDorm extends Activity implements View.OnClickListener {
                 .addItem(android.R.drawable.ic_menu_info_details, "我的")
                 .build();
 
-        navigationController.setSelect(0);
+        navigationController.setSelect(1);
 
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
             @Override
             public void onSelected(int index, int old) {
                 //选中时触发
-                if (index == 1) {
-                    Intent intent = new Intent(SelectDorm.this, UserInfo.class);
+                if (index == 0) {
+                    Intent intent = new Intent(UserInfo.this, SelectDorm.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
@@ -48,13 +49,28 @@ public class SelectDorm extends Activity implements View.OnClickListener {
         });
     }
 
+    void getUserDetail() {
+        final Method method = new Method();
+        String stuid = "1301210899";
+        method.getDetail(stuid, new MyCallback() {
+            @Override
+            public void onSuccess(HashMap<String, String> data) {
+                Log.d("data", data.toString());
+            }
 
+            @Override
+            public void onError(String error) {
+
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
 
         initView();
+        getUserDetail();
     }
 
     @Override
