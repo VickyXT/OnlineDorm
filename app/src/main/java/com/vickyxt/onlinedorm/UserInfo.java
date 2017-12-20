@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.HashMap;
 
@@ -19,8 +20,17 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 public class UserInfo extends Activity implements View.OnClickListener {
 
 
+    private TextView studidTV,nameTV,genderTV,vcodeTV,roomTV,buildingTV;
     void initView(){
         setContentView(R.layout.user_info);
+
+        studidTV = (TextView) findViewById(R.id.student_code);
+        nameTV = (TextView) findViewById(R.id.name);
+        genderTV = (TextView) findViewById(R.id.user_sex);
+        vcodeTV = (TextView) findViewById(R.id.student_code);
+        roomTV = (TextView) findViewById(R.id.student_room);
+        buildingTV = (TextView) findViewById(R.id.student_building);
+
         PageNavigationView tab = (PageNavigationView) findViewById(R.id.tab);
 
         NavigationController navigationController = tab.material()
@@ -56,6 +66,7 @@ public class UserInfo extends Activity implements View.OnClickListener {
             @Override
             public void onSuccess(HashMap<String, String> data) {
                 Log.d("data", data.toString());
+                updateUserInfo(data);
             }
 
             @Override
@@ -76,6 +87,15 @@ public class UserInfo extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view){
 
+    }
+
+    public void updateUserInfo(HashMap hashMap){
+        studidTV.setText((String) hashMap.get("studentid"));
+        nameTV.setText((String) hashMap.get("name"));
+        genderTV.setText((String) hashMap.get("gender"));
+        vcodeTV.setText((String) hashMap.get("vcode"));
+        roomTV.setText((String) hashMap.get("room"));
+        buildingTV.setText((String) hashMap.get("building"));
     }
 
 }
