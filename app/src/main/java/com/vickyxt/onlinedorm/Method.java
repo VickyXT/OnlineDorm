@@ -62,6 +62,8 @@ public class Method {
                     // 注：该回调是子线程，非主线程
                     Log.d(TAG,"callback thread id is "+Thread.currentThread().getId());
                     Log.d(TAG,response.body().string());
+
+
                 }
             });
         } catch (Exception e) {

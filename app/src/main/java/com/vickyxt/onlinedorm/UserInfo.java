@@ -3,6 +3,8 @@ package com.vickyxt.onlinedorm;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -20,7 +22,21 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 public class UserInfo extends Activity implements View.OnClickListener {
 
 
+    private static final int UPDATE_USER_INFO = 1;
     private TextView studidTV,nameTV,genderTV,vcodeTV,roomTV,buildingTV;
+
+
+    private Handler mHandler = new Handler(){
+        public void handleMessage(android.os.Message msg){
+            switch (msg.what){
+                case UPDATE_USER_INFO:
+                    updateUserInfo((HashMap) msg.obj);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
     void initView(){
         setContentView(R.layout.user_info);
 
@@ -57,16 +73,23 @@ public class UserInfo extends Activity implements View.OnClickListener {
                 //重复选中时触发
             }
         });
+
     }
 
-    void getUserDetail() {
+    void getUserDetail(String stuid) {
         final Method method = new Method();
-        String stuid = "1301210899";
         method.getDetail(stuid, new MyCallback() {
             @Override
             public void onSuccess(HashMap<String, String> data) {
-                Log.d("data", data.toString());
-                updateUserInfo(data);
+
+                if (data != null){
+                    Log.d("data",data.toString());
+
+                    Message msg = new Message();
+                    msg.what = UPDATE_USER_INFO;
+                    msg.obj = data;
+                    mHandler.sendMessage(msg);
+                }
             }
 
             @Override
@@ -81,7 +104,7 @@ public class UserInfo extends Activity implements View.OnClickListener {
         super.onCreate(saveInstanceState);
 
         initView();
-        getUserDetail();
+        getUserDetail("1301210899");
     }
 
     @Override
@@ -94,8 +117,18 @@ public class UserInfo extends Activity implements View.OnClickListener {
         nameTV.setText((String) hashMap.get("name"));
         genderTV.setText((String) hashMap.get("gender"));
         vcodeTV.setText((String) hashMap.get("vcode"));
-        roomTV.setText((String) hashMap.get("room"));
-        buildingTV.setText((String) hashMap.get("building"));
+
+        if ((String)hashMap.get("room") != null){
+            roomTV.setText((String) hashMap.get("room"));
+        }else {
+            roomTV.setText("未选择");
+        }
+
+        if ((String)hashMap.get("building") != null){
+            buildingTV.setText((String) hashMap.get("building"));
+        }else {
+            buildingTV.setText("未选择");
+        }
     }
 
 }

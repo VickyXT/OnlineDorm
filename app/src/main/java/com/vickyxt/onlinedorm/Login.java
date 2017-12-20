@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 
 /**
  * Created by VickyXT on 2017/11/27.
@@ -34,6 +35,7 @@ public class Login extends Activity implements View.OnClickListener {
 
     private TextView loginTitle;
     private ImageView userImg, passwordImg;
+    private String username,password;
 
     private Handler lHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -52,12 +54,19 @@ public class Login extends Activity implements View.OnClickListener {
         passwordImg = (ImageView)findViewById(R.id.password_image);
     }
 
+    void Login(String stuid) {
+        final Method method = new Method();
+        method.Login(username,password);
+    }
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.login);
         UserName = (EditText)findViewById(R.id.username);
+        username = UserName.getText().toString();
         PassWord = (EditText)findViewById(R.id.password);
+        password = PassWord.getText().toString();
         LoginBtn = (Button)findViewById(R.id.login_btn);
         LoginBtn.setOnClickListener(this);
 
