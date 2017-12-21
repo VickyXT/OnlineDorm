@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <!--多人选择-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="多人选择"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="66dp"
+                android:textSize="24sp"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="54dp"
+                android:id="@+id/many_square"
+                android:background="#f6f9fc"
+                android:orientation="vertical">
+
+                <!--选择室友-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="请填写您未来室友的信息"
+                    android:id="@+id/many_tip"
+                    android:textSize="12sp"
+                    android:textColor="#80353a41"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"/>
+
+                <!--室友列表-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:id="@+id/roommate" android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_below="@id/many_tip"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/square"
+                    android:elevation="2dp"
+                    android:weightSum="5"
+                    android:orientation="vertical">
+
+                    <!--总计-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/roommate_num"
+                            android:text="共计2人"
+                            android:textSize="16sp"
+                            android:textColor="@color/title_color"
+                            android:layout_centerInParent="true"
+                            android:textStyle="bold"/>
+
+                    </RelativeLayout>
+
+                    <!--我的信息-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="290dp"
+                            android:layout_height="1dp"
+                            android:background="#dce6f0"
+                            android:layout_centerHorizontal="true"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/boy"
+                            android:id="@+id/my_img"
+                            android:layout_marginLeft="40dp"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="20dp"
+                            android:text="170121xxxx"
+                            android:id="@+id/my_id"
+                            android:textSize="16sp"
+                            android:textColor="@color/title_color"
+                            android:layout_toRightOf="@id/my_img"
+                            android:layout_marginLeft="20dp"
+                            android:layout_centerVertical="true"/>
+
+                        <ImageView
+                            android:layout_width="1dp"
+                            android:layout_height="20dp"
+                            android:background="#dce6f0"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@id/my_id"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/my_code"
+                            android:text="abc123"
+                            android:textSize="16sp"
+                            android:textColor="@color/title_color"
+                            android:layout_toRightOf="@id/my_id"
+                            android:layout_marginLeft="60dp"
+                            android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                    <!--室友1信息-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="290dp"
+                            android:layout_height="1dp"
+                            android:background="#dce6f0"
+                            android:layout_centerHorizontal="true"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/boy2"
+                            android:id="@+id/friend1_img"
+                            android:layout_marginLeft="40dp"
+                            android:layout_centerVertical="true"/>
+
+                        <EditText
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:textColorHint="#9fa7b3"
+                            android:hint="学号"
+                            android:id="@+id/friend1_id"
+                            android:textSize="16sp"
+                            android:textColor="@color/title_color"
+                            android:layout_toRightOf="@id/friend1_img"
+                            android:layout_marginLeft="20dp"
+                            android:layout_centerVertical="true"/>
+
+                        <ImageView
+                            android:layout_width="1dp"
+                            android:layout_height="20dp"
+                            android:background="#dce6f0"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@id/friend1_id"
+                            android:layout_centerVertical="true"/>
+
+                        <EditText
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:id="@+id/friend1_code"
+                            android:textColorHint="#9fa7b3"
+                            android:hint="校验码"
+                            android:textSize="16sp"
+                            android:textColor="@color/title_color"
+                            android:layout_toRightOf="@id/friend1_id"
+                            android:layout_marginLeft="60dp"
+                            android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                    <!--室友2信息-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="290dp"
+                            android:layout_height="1dp"
+                            android:background="#dce6f0"
+                            android:layout_centerHorizontal="true"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/boy2"
+                            android:id="@+id/friend2_img"
+                            android:layout_marginLeft="40dp"
+                            android:layout_centerVertical="true"/>
+
+                        <EditText
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:textColorHint="#9fa7b3"
+                            android:hint="学号"
+                            android:id="@+id/friend2_id"
+                            android:textSize="16sp"
+                            android:textColor="@color/title_color"
+                            android:layout_toRightOf="@id/friend2_img"
+                            android:layout_marginLeft="20dp"
+                            android:layout_centerVertical="true"/>
+
+                        <ImageView
+                            android:layout_width="1dp"
+                            android:layout_height="20dp"
+                            android:background="#dce6f0"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@id/friend2_id"
+                            android:layout_centerVertical="true"/>
+
+                        <EditText
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:id="@+id/friend2_code"
+                            android:textColorHint="#9fa7b3"
+                            android:hint="校验码"
+                            android:textSize="16sp"
+                            android:textColor="@color/title_color"
+                            android:layout_toRightOf="@id/friend2_id"
+                            android:layout_marginLeft="60dp"
+                            android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                    <!--室友3信息-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="290dp"
+                            android:layout_height="1dp"
+                            android:background="#dce6f0"
+                            android:layout_centerHorizontal="true"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/boy2"
+                            android:id="@+id/friend3_img"
+                            android:layout_marginLeft="40dp"
+                            android:layout_centerVertical="true"/>
+
+                        <EditText
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:textColorHint="#9fa7b3"
+                            android:hint="学号"
+                            android:id="@+id/friend3_id"
+                            android:textSize="16sp"
+                            android:textColor="@color/title_color"
+                            android:layout_toRightOf="@id/friend3_img"
+                            android:layout_marginLeft="20dp"
+                            android:layout_centerVertical="true"/>
+
+                        <ImageView
+                            android:layout_width="1dp"
+                            android:layout_height="20dp"
+                            android:background="#dce6f0"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@id/friend3_id"
+                            android:layout_centerVertical="true"/>
+
+                        <EditText
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:id="@+id/friend3_code"
+                            android:textColorHint="#9fa7b3"
+                            android:hint="校验码"
+                            android:textSize="16sp"
+                            android:textColor="@color/title_color"
+                            android:layout_toRightOf="@id/friend3_id"
+                            android:layout_marginLeft="60dp"
+                            android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!--选择宿舍-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="请选择您心仪的宿舍"
+                    android:id="@+id/single_tip"
+                    android:textSize="12sp"
+                    android:textColor="#80353a41"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"/>
+
+                <!--楼列表-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:id="@+id/building" android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_below="@id/single_tip"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/square"
+                    android:elevation="2dp"
+                    android:weightSum="5"
+                    android:orientation="vertical">
+
+                    <!--5号楼-->
+                    <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/dot_active"
+                        android:id="@+id/dot5"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5号楼"
+                        android:textSize="16sp"
+                        android:textColor="@color/title_color"
+                        android:layout_toRightOf="@id/dot5"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/room5"
+                        android:text="余量100"
+                        android:textSize="12sp"
+                        android:textColor="#80353a41"
+                        android:layout_marginLeft="265dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                    <!--8号楼-->
+                    <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="290dp"
+                        android:layout_height="1dp"
+                        android:background="#dce6f0"
+                        android:layout_centerHorizontal="true"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/dot"
+                        android:id="@+id/dot8"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8号楼"
+                        android:textSize="16sp"
+                        android:textColor="@color/title_color"
+                        android:layout_toRightOf="@id/dot8"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/room8"
+                        android:text="余量100"
+                        android:textSize="12sp"
+                        android:textColor="#80353a41"
+                        android:layout_marginLeft="265dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                    <!--9号楼-->
+                    <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="290dp"
+                        android:layout_height="1dp"
+                        android:background="#dce6f0"
+                        android:layout_centerHorizontal="true"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/dot"
+                        android:id="@+id/dot9"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"
+                        android:visibility="invisible"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9号楼"
+                        android:textSize="16sp"
+                        android:textColor="@color/title_color"
+                        android:layout_toRightOf="@id/dot9"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/room9"
+                        android:text="无余量"
+                        android:textSize="12sp"
+                        android:textColor="#80353a41"
+                        android:layout_marginLeft="265dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                    <!--13号楼-->
+                    <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="290dp"
+                        android:layout_height="1dp"
+                        android:background="#dce6f0"
+                        android:layout_centerHorizontal="true"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/dot"
+                        android:id="@+id/dot13"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="13号楼"
+                        android:textSize="16sp"
+                        android:textColor="@color/title_color"
+                        android:layout_toRightOf="@id/dot13"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/room13"
+                        android:text="余量100"
+                        android:textSize="12sp"
+                        android:textColor="#80353a41"
+                        android:layout_marginLeft="265dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                    <!--14号楼-->
+                    <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="290dp"
+                        android:layout_height="1dp"
+                        android:background="#dce6f0"
+                        android:layout_centerHorizontal="true"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/dot"
+                        android:id="@+id/dot14"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="14号楼"
+                        android:textSize="16sp"
+                        android:textColor="@color/title_color"
+                        android:layout_toRightOf="@id/dot14"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/room14"
+                        android:text="余量100"
+                        android:textSize="12sp"
+                        android:textColor="#80353a41"
+                        android:layout_marginLeft="265dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                <!--buttons-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/building"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp">
+
+                    <!--返回按钮-->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/btn_back"
+                        android:id="@+id/back_btn"/>
+
+                    <!--提交按钮-->
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:id="@+id/submit_btn"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/back_btn"
+                        android:background="@drawable/button"
+                        android:text="提交"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
