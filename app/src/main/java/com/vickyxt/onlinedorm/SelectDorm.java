@@ -23,7 +23,7 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 public class SelectDorm extends Activity implements View.OnClickListener {
 
     private ImageView singleImg, manyImg;
-    private RelativeLayout singleBtn,manyBtn;
+    private RelativeLayout singleBtn, manyBtn;
 
 
     void initView(){
@@ -80,12 +80,12 @@ public class SelectDorm extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view){
 
-        if(view.getId() == R.id.single_btn){
+        if(view.getId() == R.id.single_choose){
             Intent i = new Intent(this, SingleChoose.class);
             startActivityForResult(i,1);
         }
 
-        if(view.getId() == R.id.many_btn){
+        if(view.getId() == R.id.many_choose){
             Intent i = new Intent(this, ManyChoose.class);
             startActivityForResult(i,1);
         }
