@@ -45,7 +45,7 @@ public class SingleChoose extends Activity implements View.OnClickListener {
                     Toast.makeText(SingleChoose.this, (String) msg.obj, Toast.LENGTH_LONG).show();
                     break;
                 case GO_RESULT:
-                    goToResultActivity("error");
+                    goToResultActivity((String) msg.obj);
                 default:
                     break;
             }
@@ -98,16 +98,15 @@ public class SingleChoose extends Activity implements View.OnClickListener {
         buildingArr.get(keyList[2]).put("room", (TextView)findViewById(R.id.room9));
         buildingArr.get(keyList[3]).put("room", (TextView)findViewById(R.id.room13));
         buildingArr.get(keyList[4]).put("room", (TextView)findViewById(R.id.room14));
-
-        SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
-        String gender = sharedPreferences.getString("gender", "");
-        getRoom(gender);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
+        SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
+        String gender = sharedPreferences.getString("gender", "");
+        getRoom(gender);
     }
 
     @Override
@@ -118,8 +117,7 @@ public class SingleChoose extends Activity implements View.OnClickListener {
                 startActivityForResult(iSelectDorm, 1);
                 break;
             case R.id.submit_btn:
-                Intent iResult = new Intent(this, Result.class);
-                startActivityForResult(iResult, 1);
+                SelectRoom();
                 break;
             case R.id.b5:
                 chooseBuilding("5");
@@ -221,9 +219,9 @@ public class SingleChoose extends Activity implements View.OnClickListener {
 
     private void goToResultActivity(String result) {
         if (result.equals("success")){
-            Intent intent = new Intent(SingleChoose.this, ResultFail.class);
+            Intent intent = new Intent(SingleChoose.this, Result.class);
             startActivity(intent);
-        }else {
+        } else {
             Intent intent = new Intent(SingleChoose.this, ResultFail.class);
             startActivity(intent);
         }
