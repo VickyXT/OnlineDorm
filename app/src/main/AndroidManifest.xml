@@ -26,6 +26,7 @@
         <activity android:name=".UserInfo"></activity>
         <activity android:name=".SingleChoose"></activity>
         <activity android:name=".ManyChoose"></activity>
+        <activity android:name=".Result"></activity>
 
 
     </application>
