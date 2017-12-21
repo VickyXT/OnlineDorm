@@ -45,7 +45,7 @@ public class SingleChoose extends Activity implements View.OnClickListener {
                     Toast.makeText(SingleChoose.this, (String) msg.obj, Toast.LENGTH_LONG).show();
                     break;
                 case GO_RESULT:
-                    goToResultActivity((String) msg.obj);
+                    goToResultActivity("error");
                 default:
                     break;
             }
@@ -220,8 +220,14 @@ public class SingleChoose extends Activity implements View.OnClickListener {
     }
 
     private void goToResultActivity(String result) {
-        Intent intent = new Intent(SingleChoose.this, Result.class);
-        startActivity(intent);
+        if (result.equals("success")){
+            Intent intent = new Intent(SingleChoose.this, ResultFail.class);
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(SingleChoose.this, ResultFail.class);
+            startActivity(intent);
+        }
+
     }
 
 }
