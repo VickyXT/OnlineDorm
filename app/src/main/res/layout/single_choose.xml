@@ -47,8 +47,10 @@
             <!--5号楼-->
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:id="@+id/b5"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:descendantFocusability="beforeDescendants">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -83,7 +85,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/b8"
+                android:descendantFocusability="beforeDescendants">
 
                 <ImageView
                     android:layout_width="290dp"
@@ -123,7 +127,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/b9"
+                android:descendantFocusability="beforeDescendants">
 
                 <ImageView
                     android:layout_width="290dp"
@@ -164,7 +170,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/b13"
+                android:descendantFocusability="beforeDescendants">
 
                 <ImageView
                     android:layout_width="290dp"
@@ -204,7 +212,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/b14"
+                android:descendantFocusability="beforeDescendants">
 
                 <ImageView
                     android:layout_width="290dp"
