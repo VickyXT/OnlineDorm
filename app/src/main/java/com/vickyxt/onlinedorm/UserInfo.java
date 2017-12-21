@@ -23,25 +23,8 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
 public class UserInfo extends Activity implements View.OnClickListener {
 
-
-    private static final int UPDATE_USER_INFO = 1;
-    private static final int SHOW_ERROR = 0;
     private TextView studidTV,nameTV,genderTV,vcodeTV,roomTV,buildingTV;
 
-
-    private Handler mHandler = new Handler(){
-        public void handleMessage(android.os.Message msg){
-            switch (msg.what){
-                case UPDATE_USER_INFO:
-                    updateUserInfo((HashMap) msg.obj);
-                    break;
-                case SHOW_ERROR:
-                    Toast.makeText(UserInfo.this, (String) msg.obj,Toast.LENGTH_LONG).show();
-                default:
-                    break;
-            }
-        }
-    };
     void initView(){
         setContentView(R.layout.user_info);
 
@@ -81,37 +64,11 @@ public class UserInfo extends Activity implements View.OnClickListener {
 
     }
 
-    void getUserDetail(String stuid) {
-        final Method method = new Method();
-        method.getDetail(stuid, new MyCallback() {
-            @Override
-            public void onSuccess(HashMap<String, String> data) {
-
-                if (data != null){
-                    Log.d("data",data.toString());
-
-                    Message msg = new Message();
-                    msg.what = UPDATE_USER_INFO;
-                    msg.obj = data;
-                    mHandler.sendMessage(msg);
-                }
-            }
-
-            @Override
-            public void onError(String error) {
-                Message msg = new Message();
-                msg.what = SHOW_ERROR;
-                msg.obj = error;
-                mHandler.sendMessage(msg);
-            }
-        });
-    }
-
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         initView();
-        getUserDetail("1301210899");
+        updateUserInfo();
     }
 
     @Override
@@ -125,39 +82,29 @@ public class UserInfo extends Activity implements View.OnClickListener {
 
     }
 
-    public void updateUserInfo(HashMap hashMap){
-        String stuid = (String) hashMap.get("studentid");
-        String name = (String) hashMap.get("name");
-        String gender = (String) hashMap.get("gender");
-        String vcode = (String) hashMap.get("vcode");
-        String room = (String) hashMap.get("room");
-        String building = (String) hashMap.get("building");
-        String location = (String) hashMap.get("location");
-        String grade = (String) hashMap.get("grade");
-
+    public void updateUserInfo(){
         SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("name", name);
-        editor.putString("gender", gender);
-        editor.putString("vcode", vcode);
-        editor.putString("room", room);
-        editor.putString("building", building);
-        editor.putString("location", location);
-        editor.putString("grade", grade);
-        editor.commit();
+        String stuid = sharedPreferences.getString("stuid", "");
+        String name = sharedPreferences.getString("name", "");
+        String gender = sharedPreferences.getString("gender", "");
+        String vcode = sharedPreferences.getString("vcode", "");
+        String room = sharedPreferences.getString("room", "");
+        String building = sharedPreferences.getString("building", "");
+        String location = sharedPreferences.getString("location", "");
+        String grade = sharedPreferences.getString("grade", "");
 
         studidTV.setText(stuid);
         nameTV.setText(name);
         genderTV.setText(gender);
         vcodeTV.setText(vcode);
 
-        if ((String)hashMap.get("room") != null){
+        if (!room.equals("")){
             roomTV.setText(room);
         }else {
             roomTV.setText("未选择");
         }
 
-        if ((String)hashMap.get("building") != null){
+        if (!building.equals("")){
             buildingTV.setText(building);
         }else {
             buildingTV.setText("未选择");

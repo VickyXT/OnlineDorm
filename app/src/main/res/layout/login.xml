@@ -49,7 +49,10 @@
             android:layout_marginLeft="32dp"
             android:id="@+id/username"
             android:hint="用户名"
-            android:textColorHint="#9fa7b3"/>
+            android:textColorHint="#9fa7b3"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:imeOptions="actionNext"/>
 
         <ImageView
             android:layout_width="match_parent"
@@ -84,7 +87,10 @@
                 android:layout_marginLeft="32dp"
                 android:id="@+id/password"
                 android:hint="密码"
-                android:textColorHint="#9fa7b3"/>
+                android:textColorHint="#9fa7b3"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:imeOptions="actionDone"/>
 
             <ImageView
                 android:layout_width="match_parent"

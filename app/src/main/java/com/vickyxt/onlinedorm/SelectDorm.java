@@ -2,6 +2,7 @@ package com.vickyxt.onlinedorm;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -54,6 +55,7 @@ public class SelectDorm extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         initView();
+        checkLogin();
     }
 
     @Override
@@ -61,4 +63,12 @@ public class SelectDorm extends Activity implements View.OnClickListener {
 
     }
 
+    private void checkLogin(){
+        SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
+        String stuid = sharedPreferences.getString("stuid", "");
+        if (stuid.equals("")) {
+            Intent intent = new Intent(SelectDorm.this, Login.class);
+            startActivity(intent);
+        }
+    }
 }
