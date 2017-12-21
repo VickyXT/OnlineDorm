@@ -30,7 +30,7 @@ public class Result extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        if(v.getId() == R.id.back_btn){
+        if(v.getId() == R.id.finish_btn){
             Intent i = new Intent(this, UserInfo.class);
             startActivityForResult(i,1);
         }
