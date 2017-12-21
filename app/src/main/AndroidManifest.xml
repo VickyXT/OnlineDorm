@@ -24,6 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserInfo"></activity>
+        <activity android:name=".SingleChoose"></activity>
+        <activity android:name=".ManyChoose"></activity>
+
 
     </application>
 

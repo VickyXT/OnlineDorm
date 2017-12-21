@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageNavigationView;
@@ -18,9 +22,22 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
 public class SelectDorm extends Activity implements View.OnClickListener {
 
+    private ImageView singleImg, manyImg;
+    private RelativeLayout singleBtn,manyBtn;
+
 
     void initView(){
         setContentView(R.layout.select_dorm);
+
+        singleImg = (ImageView) findViewById(R.id.single_img);
+        manyImg = (ImageView) findViewById(R.id.many_img);
+
+        singleBtn = (RelativeLayout) findViewById(R.id.single_choose);
+        singleBtn.setOnClickListener(this);
+
+        manyBtn = (RelativeLayout) findViewById(R.id.many_choose);
+        manyBtn.setOnClickListener(this);
+
         PageNavigationView tab = (PageNavigationView) findViewById(R.id.tab);
 
         NavigationController navigationController = tab.material()
@@ -54,12 +71,24 @@ public class SelectDorm extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
+
         initView();
         checkLogin();
+        updateInfo();
     }
 
     @Override
     public void onClick(View view){
+
+        if(view.getId() == R.id.single_btn){
+            Intent i = new Intent(this, SingleChoose.class);
+            startActivityForResult(i,1);
+        }
+
+        if(view.getId() == R.id.many_btn){
+            Intent i = new Intent(this, ManyChoose.class);
+            startActivityForResult(i,1);
+        }
 
     }
 
@@ -69,6 +98,20 @@ public class SelectDorm extends Activity implements View.OnClickListener {
         if (stuid.equals("")) {
             Intent intent = new Intent(SelectDorm.this, Login.class);
             startActivity(intent);
+        }
+    }
+
+    public void updateInfo(){
+        SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
+
+        String gender = sharedPreferences.getString("gender", "");
+
+        if (!gender.equals("女")){
+            singleImg.setImageResource(R.drawable.boy);
+            manyImg.setImageResource(R.drawable.boys);
+        }else {
+            singleImg.setImageResource(R.drawable.girl);
+            manyImg.setImageResource(R.drawable.girls);
         }
     }
 }

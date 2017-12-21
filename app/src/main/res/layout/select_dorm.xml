@@ -56,6 +56,8 @@
         <!--单人-->
         <RelativeLayout
             android:id="@+id/single_choose"
+            android:onClick="onClick"
+            android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
@@ -78,6 +80,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/single_btn"
                 android:src="@drawable/arrow_right"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="304dp"
@@ -87,6 +90,9 @@
 
         <!--多人-->
         <RelativeLayout
+            android:id="@+id/many_choose"
+            android:onClick="onClick"
+            android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
@@ -117,6 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow_right"
+                android:id="@+id/many_btn"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="304dp"
                 android:layout_centerVertical="true"/>

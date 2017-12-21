@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 public class UserInfo extends Activity implements View.OnClickListener {
 
     private TextView studidTV,nameTV,genderTV,vcodeTV,roomTV,buildingTV;
+    private ImageView dormImg;
 
     void initView(){
         setContentView(R.layout.user_info);
@@ -34,6 +36,8 @@ public class UserInfo extends Activity implements View.OnClickListener {
         vcodeTV = (TextView) findViewById(R.id.student_code);
         roomTV = (TextView) findViewById(R.id.student_room);
         buildingTV = (TextView) findViewById(R.id.student_building);
+
+        dormImg = (ImageView) findViewById(R.id.dorm_img);
 
         PageNavigationView tab = (PageNavigationView) findViewById(R.id.tab);
 
@@ -100,8 +104,10 @@ public class UserInfo extends Activity implements View.OnClickListener {
 
         if (!room.equals("")){
             roomTV.setText(room);
+            dormImg.setImageResource(R.drawable.dorm);
         }else {
             roomTV.setText("未选择");
+            dormImg.setImageResource(R.drawable.dorm_dark);
         }
 
         if (!building.equals("")){
