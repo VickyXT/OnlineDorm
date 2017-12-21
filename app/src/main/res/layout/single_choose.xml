@@ -50,15 +50,17 @@
                 android:id="@+id/b5"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:onClick="onClick"
                 android:descendantFocusability="beforeDescendants">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/dot_active"
+                    android:src="@drawable/dot"
                     android:id="@+id/dot5"
                     android:layout_marginLeft="20dp"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -74,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/room5"
-                    android:text="余量100"
+                    android:text="无余量"
                     android:textSize="12sp"
                     android:textColor="#80353a41"
                     android:layout_marginLeft="265dp"
@@ -87,6 +89,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:id="@+id/b8"
+                android:onClick="onClick"
                 android:descendantFocusability="beforeDescendants">
 
                 <ImageView
@@ -100,7 +103,8 @@
                     android:src="@drawable/dot"
                     android:id="@+id/dot8"
                     android:layout_marginLeft="20dp"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -116,7 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/room8"
-                    android:text="余量100"
+                    android:text="无余量"
                     android:textSize="12sp"
                     android:textColor="#80353a41"
                     android:layout_marginLeft="265dp"
@@ -129,6 +133,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:id="@+id/b9"
+                android:onClick="onClick"
                 android:descendantFocusability="beforeDescendants">
 
                 <ImageView
@@ -172,6 +177,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:id="@+id/b13"
+                android:onClick="onClick"
                 android:descendantFocusability="beforeDescendants">
 
                 <ImageView
@@ -185,7 +191,8 @@
                     android:src="@drawable/dot"
                     android:id="@+id/dot13"
                     android:layout_marginLeft="20dp"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -201,7 +208,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/room13"
-                    android:text="余量100"
+                    android:text="无余量"
                     android:textSize="12sp"
                     android:textColor="#80353a41"
                     android:layout_marginLeft="265dp"
@@ -214,6 +221,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:id="@+id/b14"
+                android:onClick="onClick"
                 android:descendantFocusability="beforeDescendants">
 
                 <ImageView
@@ -227,7 +235,8 @@
                     android:src="@drawable/dot"
                     android:id="@+id/dot14"
                     android:layout_marginLeft="20dp"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -243,7 +252,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/room14"
-                    android:text="余量100"
+                    android:text="无余量"
                     android:textSize="12sp"
                     android:textColor="#80353a41"
                     android:layout_marginLeft="265dp"

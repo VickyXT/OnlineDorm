@@ -200,11 +200,13 @@ public class Method {
                     Log.d(TAG,json);
                     HashMap<String,String> map = com.alibaba.fastjson.JSON.parseObject(json, new TypeReference<HashMap<String,String>>() {});
                     String errcode = (String) map.get("errcode");
+                    HashMap<String,String> data = new HashMap<String, String>();
                     if (errcode.equals("0")) {
-                        callback.onSuccess(null);
+                        data.put("result", "success");
                     } else {
-                        callback.onError(errcode);
+                        data.put("result", "error");
                     }
+                    callback.onSuccess(data);
                 }
             });
         } catch (Exception e) {
