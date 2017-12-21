@@ -153,7 +153,10 @@
                             android:textColor="@color/title_color"
                             android:layout_toRightOf="@id/friend1_img"
                             android:layout_marginLeft="20dp"
-                            android:layout_centerVertical="true"/>
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext"/>
 
                         <ImageView
                             android:layout_width="1dp"
@@ -173,7 +176,10 @@
                             android:textColor="@color/title_color"
                             android:layout_toRightOf="@id/friend1_id"
                             android:layout_marginLeft="60dp"
-                            android:layout_centerVertical="true" />
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext"/>
                     </RelativeLayout>
 
                     <!--室友2信息-->
@@ -205,7 +211,10 @@
                             android:textColor="@color/title_color"
                             android:layout_toRightOf="@id/friend2_img"
                             android:layout_marginLeft="20dp"
-                            android:layout_centerVertical="true"/>
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext"/>
 
                         <ImageView
                             android:layout_width="1dp"
@@ -225,7 +234,10 @@
                             android:textColor="@color/title_color"
                             android:layout_toRightOf="@id/friend2_id"
                             android:layout_marginLeft="60dp"
-                            android:layout_centerVertical="true" />
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext"/>
                     </RelativeLayout>
 
                     <!--室友3信息-->
@@ -257,7 +269,10 @@
                             android:textColor="@color/title_color"
                             android:layout_toRightOf="@id/friend3_img"
                             android:layout_marginLeft="20dp"
-                            android:layout_centerVertical="true"/>
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext"/>
 
                         <ImageView
                             android:layout_width="1dp"
@@ -277,7 +292,10 @@
                             android:textColor="@color/title_color"
                             android:layout_toRightOf="@id/friend3_id"
                             android:layout_marginLeft="60dp"
-                            android:layout_centerVertical="true" />
+                            android:layout_centerVertical="true"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:imeOptions="actionDone"/>
                     </RelativeLayout>
 
                 </LinearLayout>
