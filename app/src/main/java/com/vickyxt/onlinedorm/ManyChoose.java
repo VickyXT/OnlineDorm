@@ -34,6 +34,7 @@ public class ManyChoose extends Activity implements View.OnClickListener {
     private Button submitBtn;
     private ArrayList<HashMap<String, EditText>> editArr;
     private String buildingNo;
+    private int num;
     String keyList[] = {"5", "8", "9", "13", "14"};
     private HashMap<String, HashMap<String, Object>> buildingArr;
 
@@ -208,8 +209,14 @@ public class ManyChoose extends Activity implements View.OnClickListener {
     private void SelectRoom() {
         SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
         String stuid = sharedPreferences.getString("stuid", "");
+        String stu1id = editArr.get(0).get("id").getText().toString();
+        String v1code = editArr.get(0).get("code").getText().toString();
+        String stu2id = editArr.get(1).get("id").getText().toString();
+        String v2code = editArr.get(1).get("code").getText().toString();
+        String stu3id = editArr.get(2).get("id").getText().toString();
+        String v3code = editArr.get(2).get("code").getText().toString();
         final Method method = new Method();
-        method.SelectRoom(buildingNo, "1", stuid, null, null, null, null, null, null, new MyCallback() {
+        method.SelectRoom(buildingNo, "1", stuid, stu1id, v1code, stu2id, v2code, stu3id, v3code, new MyCallback() {
             @Override
             public void onSuccess(HashMap<String, String> data) {
                 Message msg = new Message();
