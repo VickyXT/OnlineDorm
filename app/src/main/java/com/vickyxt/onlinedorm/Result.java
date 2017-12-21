@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 
 /**
  * Created by VickyXT on 2017/12/21.
@@ -12,12 +12,12 @@ import android.widget.ImageView;
 
 public class Result extends Activity implements View.OnClickListener {
 
-    private ImageView backBtn;
+    private Button backBtn;
 
     void initView(){
         setContentView(R.layout.result);
 
-        backBtn = (ImageView)findViewById(R.id.back_btn);
+        backBtn = (Button)findViewById(R.id.finish_btn);
         backBtn.setOnClickListener(this);
     }
 

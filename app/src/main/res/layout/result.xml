@@ -43,7 +43,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/back_btn"
+        android:id="@+id/finish_btn"
         android:layout_marginTop="170dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
