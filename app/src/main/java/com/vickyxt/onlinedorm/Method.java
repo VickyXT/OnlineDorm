@@ -36,45 +36,10 @@ public class Method {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 
-    public void Login(String username, String password){
+    public void Login(String username, String password, final MyCallback callback){
         try {
             String url = baseUrl + "Login";
             String parameter = "?username=" + username + "&password=" + password;
-            url += parameter;
-            Log.d("Method", url);
-
-            OkHttpClient.Builder mBuilder = new OkHttpClient.Builder();
-            mBuilder.sslSocketFactory(createSSLSocketFactory(), new TrustAllManager());
-            mBuilder.hostnameVerifier(new TrustAllHostnameVerifier());
-
-            OkHttpClient client = mBuilder.build();
-            Request request = new Request.Builder()
-                    .url(url)
-                    .get()
-                    .build();
-            client.newCall(request).enqueue(new okhttp3.Callback() {
-                @Override
-                public void onFailure(okhttp3.Call call, IOException e) {
-                    Log.d(TAG,e.toString());
-                }
-                @Override
-                public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
-                    // 注：该回调是子线程，非主线程
-                    Log.d(TAG,"callback thread id is "+Thread.currentThread().getId());
-                    Log.d(TAG,response.body().string());
-
-
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void getDetail(String stuid, final MyCallback callback){
-        try {
-            String url = baseUrl + "getDetail";
-            String parameter = "?stuid=" + stuid;
             url += parameter;
             Log.d("Method", url);
 
@@ -110,11 +75,52 @@ public class Method {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            callback.onError("请求失败");
         }
     }
 
-    public void getRoom(String gender){
+    public void getDetail(String stuid, final MyCallback callback){
+        try {
+            String url = baseUrl + "getDetail";
+            String parameter = "?stuid=" + stuid;
+            url += parameter;
+            Log.d("Method", url);
+
+            OkHttpClient.Builder mBuilder = new OkHttpClient.Builder();
+            mBuilder.sslSocketFactory(createSSLSocketFactory(), new TrustAllManager());
+            mBuilder.hostnameVerifier(new TrustAllHostnameVerifier());
+
+            OkHttpClient client = mBuilder.build();
+            Request request = new Request.Builder()
+                    .url(url)
+                    .get()
+                    .build();
+            client.newCall(request).enqueue(new okhttp3.Callback() {
+                @Override
+                public void onFailure(okhttp3.Call call, IOException e) {
+                    callback.onError(e.toString());
+                }
+                @Override
+                public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+                    // 注：该回调是子线程，非主线程
+                    Log.d(TAG,"callback thread id is "+Thread.currentThread().getId());
+                    String json = response.body().string();
+                    Log.d(TAG,json);
+                    HashMap<String,String> map = com.alibaba.fastjson.JSON.parseObject(json, new TypeReference<HashMap<String,String>>() {});
+                    String errcode = (String) map.get("errcode");
+                    if (errcode.equals("0")) {
+                        HashMap<String,String> data = com.alibaba.fastjson.JSON.parseObject(map.get("data"), new TypeReference<HashMap<String,String>>() {});
+                        callback.onSuccess(data);
+                    } else {
+                        callback.onError(errcode);
+                    }
+                }
+            });
+        } catch (Exception e) {
+            callback.onError(e.toString());
+        }
+    }
+
+    public void getRoom(String gender, final MyCallback callback){
         try {
             String url = baseUrl + "getRoom";
             String parameter = "?gender=" + gender;
@@ -139,7 +145,16 @@ public class Method {
                 public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
                     // 注：该回调是子线程，非主线程
                     Log.d(TAG,"callback thread id is "+Thread.currentThread().getId());
-                    Log.d(TAG,response.body().string());
+                    String json = response.body().string();
+                    Log.d(TAG,json);
+                    HashMap<String,String> map = com.alibaba.fastjson.JSON.parseObject(json, new TypeReference<HashMap<String,String>>() {});
+                    String errcode = (String) map.get("errcode");
+                    if (errcode.equals("0")) {
+                        HashMap<String,String> data = com.alibaba.fastjson.JSON.parseObject(map.get("data"), new TypeReference<HashMap<String,String>>() {});
+                        callback.onSuccess(data);
+                    } else {
+                        callback.onError(errcode);
+                    }
                 }
             });
         } catch (Exception e) {
@@ -148,7 +163,7 @@ public class Method {
     }
 
     public void SelectRoom(String buildingNo, String num, String stuid, String stu1id, String v1code, String stu2id,
-                           String v2code, String stu3id, String v3code){
+                           String v2code, String stu3id, String v3code, final MyCallback callback){
         try {
             String url = baseUrl + "SelectRoom";
             Log.d("Method", url);
@@ -181,7 +196,15 @@ public class Method {
                 public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
                     // 注：该回调是子线程，非主线程
                     Log.d(TAG,"callback thread id is "+Thread.currentThread().getId());
-                    Log.d(TAG,response.body().string());
+                    String json = response.body().string();
+                    Log.d(TAG,json);
+                    HashMap<String,String> map = com.alibaba.fastjson.JSON.parseObject(json, new TypeReference<HashMap<String,String>>() {});
+                    String errcode = (String) map.get("errcode");
+                    if (errcode.equals("0")) {
+                        callback.onSuccess(null);
+                    } else {
+                        callback.onError(errcode);
+                    }
                 }
             });
         } catch (Exception e) {

@@ -2,12 +2,14 @@ package com.vickyxt.onlinedorm;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -23,6 +25,7 @@ public class UserInfo extends Activity implements View.OnClickListener {
 
 
     private static final int UPDATE_USER_INFO = 1;
+    private static final int SHOW_ERROR = 0;
     private TextView studidTV,nameTV,genderTV,vcodeTV,roomTV,buildingTV;
 
 
@@ -32,6 +35,8 @@ public class UserInfo extends Activity implements View.OnClickListener {
                 case UPDATE_USER_INFO:
                     updateUserInfo((HashMap) msg.obj);
                     break;
+                case SHOW_ERROR:
+                    Toast.makeText(UserInfo.this, (String) msg.obj,Toast.LENGTH_LONG).show();
                 default:
                     break;
             }
@@ -94,7 +99,10 @@ public class UserInfo extends Activity implements View.OnClickListener {
 
             @Override
             public void onError(String error) {
-
+                Message msg = new Message();
+                msg.what = SHOW_ERROR;
+                msg.obj = error;
+                mHandler.sendMessage(msg);
             }
         });
     }
@@ -102,9 +110,14 @@ public class UserInfo extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-
         initView();
         getUserDetail("1301210899");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("isFirst", false);
     }
 
     @Override
@@ -113,19 +126,39 @@ public class UserInfo extends Activity implements View.OnClickListener {
     }
 
     public void updateUserInfo(HashMap hashMap){
-        studidTV.setText((String) hashMap.get("studentid"));
-        nameTV.setText((String) hashMap.get("name"));
-        genderTV.setText((String) hashMap.get("gender"));
-        vcodeTV.setText((String) hashMap.get("vcode"));
+        String stuid = (String) hashMap.get("studentid");
+        String name = (String) hashMap.get("name");
+        String gender = (String) hashMap.get("gender");
+        String vcode = (String) hashMap.get("vcode");
+        String room = (String) hashMap.get("room");
+        String building = (String) hashMap.get("building");
+        String location = (String) hashMap.get("location");
+        String grade = (String) hashMap.get("grade");
+
+        SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("name", name);
+        editor.putString("gender", gender);
+        editor.putString("vcode", vcode);
+        editor.putString("room", room);
+        editor.putString("building", building);
+        editor.putString("location", location);
+        editor.putString("grade", grade);
+        editor.commit();
+
+        studidTV.setText(stuid);
+        nameTV.setText(name);
+        genderTV.setText(gender);
+        vcodeTV.setText(vcode);
 
         if ((String)hashMap.get("room") != null){
-            roomTV.setText((String) hashMap.get("room"));
+            roomTV.setText(room);
         }else {
             roomTV.setText("未选择");
         }
 
         if ((String)hashMap.get("building") != null){
-            buildingTV.setText((String) hashMap.get("building"));
+            buildingTV.setText(building);
         }else {
             buildingTV.setText("未选择");
         }

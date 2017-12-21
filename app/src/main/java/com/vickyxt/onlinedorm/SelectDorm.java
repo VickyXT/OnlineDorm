@@ -53,7 +53,6 @@ public class SelectDorm extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-
         initView();
     }
 
