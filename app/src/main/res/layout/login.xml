@@ -8,11 +8,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="320dp"
-        android:background="@color/white"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="0dp"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:background="@color/white"
+        android:elevation="2dp">
 
         <TextView
             style="@style/Title"
@@ -112,7 +113,8 @@
             android:text="登录"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:elevation="2dp"/>
 
 
     </RelativeLayout>

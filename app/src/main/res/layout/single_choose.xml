@@ -39,7 +39,7 @@
             android:layout_marginRight="15dp"
             android:layout_below="@id/single_tip"
             android:layout_marginTop="10dp"
-            android:background="@drawable/square"
+            android:background="@color/white"
             android:elevation="2dp"
             android:weightSum="5"
             android:orientation="vertical">
