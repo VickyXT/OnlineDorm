@@ -218,14 +218,9 @@ public class SingleChoose extends Activity implements View.OnClickListener {
     }
 
     private void goToResultActivity(String result) {
-        if (result.equals("success")){
-            Intent intent = new Intent(SingleChoose.this, Result.class);
-            startActivity(intent);
-        } else {
-            Intent intent = new Intent(SingleChoose.this, ResultFail.class);
-            startActivity(intent);
-        }
-
+        Intent intent = new Intent(SingleChoose.this, Result.class);
+        intent.putExtra("result", result);
+        startActivity(intent);
     }
 
 }

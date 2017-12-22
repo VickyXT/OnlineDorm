@@ -27,7 +27,6 @@
         <activity android:name=".SingleChoose"></activity>
         <activity android:name=".ManyChoose"></activity>
         <activity android:name=".Result"></activity>
-        <activity android:name=".ResultFail"></activity>
 
     </application>
 

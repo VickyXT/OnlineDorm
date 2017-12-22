@@ -15,9 +15,15 @@ public class Result extends Activity implements View.OnClickListener {
     private Button backBtn;
 
     void initView(){
-        setContentView(R.layout.result);
-
-        backBtn = (Button)findViewById(R.id.finish_btn);
+        Intent intent = getIntent();
+        String result = intent.getStringExtra("result");
+        if (result.equals("success")) {
+            setContentView(R.layout.result);
+            backBtn = (Button)findViewById(R.id.finish_btn);
+        } else {
+            setContentView(R.layout.resultfail);
+            backBtn = (Button)findViewById(R.id.finish2_btn);
+        }
         backBtn.setOnClickListener(this);
     }
 
@@ -29,11 +35,10 @@ public class Result extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
-        if(v.getId() == R.id.finish_btn){
-            Intent i = new Intent(this, UserInfo.class);
-            startActivityForResult(i,1);
+        if(v.getId() == R.id.finish_btn || v.getId() == R.id.finish2_btn){
+            Intent intent = new Intent(this, UserInfo.class);
+            intent.putExtra("update", true);
+            startActivity(intent);
         }
-
     }
 }

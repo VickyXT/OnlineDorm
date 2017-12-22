@@ -50,7 +50,6 @@ public class Login extends Activity implements View.OnClickListener {
                 case UPDATE_USER_INFO:
                     Toast.makeText(Login.this, "登录成功", Toast.LENGTH_LONG).show();
                     if (saveUserInfo((HashMap<String, String>) msg.obj)) {
-//                        SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
                         goToNextActivity();
                     }
                     break;

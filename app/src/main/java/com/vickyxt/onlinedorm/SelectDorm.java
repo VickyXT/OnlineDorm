@@ -54,6 +54,7 @@ public class SelectDorm extends Activity implements View.OnClickListener {
                 if (index == 1) {
                     Intent intent = new Intent(SelectDorm.this, UserInfo.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    intent.putExtra("update", false);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                 }

@@ -27,13 +27,34 @@ public class UserInfo extends Activity implements View.OnClickListener {
     private TextView studidTV,nameTV,genderTV,vcodeTV,roomTV,buildingTV;
     private ImageView dormImg;
 
+    private static final int SHOW_ERROR = 0;
+    private static final int UPDATE_USER_INFO = 1;
+
+    private Handler mHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            switch (msg.what) {
+                case UPDATE_USER_INFO:
+                    Toast.makeText(UserInfo.this, "更新成功", Toast.LENGTH_LONG).show();
+                    if (saveUserInfo((HashMap<String, String>) msg.obj)) {
+                        updateUserInfo();
+                    }
+                    break;
+                case SHOW_ERROR:
+                    Toast.makeText(UserInfo.this, (String) msg.obj, Toast.LENGTH_LONG).show();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
     void initView(){
         setContentView(R.layout.user_info);
 
         studidTV = (TextView) findViewById(R.id.student_code);
         nameTV = (TextView) findViewById(R.id.name);
         genderTV = (TextView) findViewById(R.id.user_sex);
-        vcodeTV = (TextView) findViewById(R.id.student_code);
+        vcodeTV = (TextView) findViewById(R.id.check_code);
         roomTV = (TextView) findViewById(R.id.student_room);
         buildingTV = (TextView) findViewById(R.id.student_building);
 
@@ -72,7 +93,14 @@ public class UserInfo extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         initView();
-        updateUserInfo();
+        Intent intent = getIntent();
+        if (intent.getBooleanExtra("update", false)) {
+            SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
+            String stuid = sharedPreferences.getString("stuid", "");
+            getUserDetail(stuid);
+        } else {
+            updateUserInfo();
+        }
     }
 
     @Override
@@ -84,6 +112,55 @@ public class UserInfo extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view){
 
+    }
+
+    private void getUserDetail(String stuid) {
+        final Method method = new Method();
+        method.getDetail(stuid, new MyCallback() {
+            @Override
+            public void onSuccess(HashMap<String, String> data) {
+                if (data != null){
+                    Log.d("data",data.toString());
+
+                    Message msg = new Message();
+                    msg.what = UPDATE_USER_INFO;
+                    msg.obj = data;
+                    mHandler.sendMessage(msg);
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+                Message msg = new Message();
+                msg.what = SHOW_ERROR;
+                msg.obj = error;
+                mHandler.sendMessage(msg);
+            }
+        });
+    }
+
+    private boolean saveUserInfo(HashMap<String, String> hashMap) {
+        String stuid = (String) hashMap.get("studentid");
+        String name = (String) hashMap.get("name");
+        String gender = (String) hashMap.get("gender");
+        String vcode = (String) hashMap.get("vcode");
+        String room = (String) hashMap.get("room");
+        String building = (String) hashMap.get("building");
+        String location = (String) hashMap.get("location");
+        String grade = (String) hashMap.get("grade");
+
+        SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("stuid", stuid);
+        editor.putString("name", name);
+        editor.putString("gender", gender);
+        editor.putString("vcode", vcode);
+        editor.putString("room", room);
+        editor.putString("building", building);
+        editor.putString("location", location);
+        editor.putString("grade", grade);
+        editor.commit();
+        return true;
     }
 
     public void updateUserInfo(){

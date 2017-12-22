@@ -273,14 +273,9 @@ public class ManyChoose extends Activity implements View.OnClickListener {
     }
 
     private void goToResultActivity(String result) {
-        if (result.equals("success")){
-            Intent intent = new Intent(ManyChoose.this, Result.class);
-            startActivity(intent);
-        } else {
-            Intent intent = new Intent(ManyChoose.this, ResultFail.class);
-            startActivity(intent);
-        }
-
+        Intent intent = new Intent(ManyChoose.this, Result.class);
+        intent.putExtra("result", result);
+        startActivity(intent);
     }
 
     private boolean checkAll() {
