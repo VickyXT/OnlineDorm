@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class UserInfo extends Activity implements View.OnClickListener {
 
     private TextView studidTV,nameTV,genderTV,vcodeTV,roomTV,buildingTV;
     private ImageView dormImg;
+    private Button logoutBtn;
 
     private static final int SHOW_ERROR = 0;
     private static final int UPDATE_USER_INFO = 1;
@@ -59,6 +61,9 @@ public class UserInfo extends Activity implements View.OnClickListener {
         buildingTV = (TextView) findViewById(R.id.student_building);
 
         dormImg = (ImageView) findViewById(R.id.dorm_img);
+
+        logoutBtn = (Button) findViewById(R.id.logout);
+        logoutBtn.setOnClickListener(this);
 
         PageNavigationView tab = (PageNavigationView) findViewById(R.id.tab);
 
@@ -111,7 +116,18 @@ public class UserInfo extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view){
+        if (view.getId() == R.id.logout) {
+            logout();
+        }
+    }
 
+    private void logout() {
+        SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.commit();
+        Intent intent = new Intent(UserInfo.this, Login.class);
+        startActivity(intent);
     }
 
     private void getUserDetail(String stuid) {

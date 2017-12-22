@@ -5,6 +5,16 @@
     android:background="@drawable/background"
     android:gravity="center">
 
+    <!--登出按钮-->
+    <Button
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/logout"
+        android:id="@+id/logout"/>
+
     <!--用户头像-->
     <ImageView
         android:layout_width="120dp"
