@@ -17,7 +17,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -34,9 +36,11 @@ public class ManyChoose extends Activity implements View.OnClickListener {
     private Button submitBtn;
     private ArrayList<HashMap<String, EditText>> editArr;
     private String buildingNo;
-    private int num;
-    String keyList[] = {"5", "8", "9", "13", "14"};
+    private TextView numTv;
+    private int num = 1;
+    private String keyList[] = {"5", "8", "9", "13", "14"};
     private HashMap<String, HashMap<String, Object>> buildingArr;
+    private int[] hashCorrectArr = new int[]{0, 32, 48, 56, 60, 62, 63};
 
     private Handler mHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -63,6 +67,8 @@ public class ManyChoose extends Activity implements View.OnClickListener {
 
         submitBtn = (Button)findViewById(R.id.submit_btn);
         submitBtn.setOnClickListener(this);
+
+        numTv = (TextView) findViewById(R.id.roommate_num);
 
         editArr = new ArrayList<HashMap<String, EditText>>();
         for (int i = 0; i < 3; i++) {
@@ -141,6 +147,7 @@ public class ManyChoose extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
+        updateNumText();
         SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
         String gender = sharedPreferences.getString("gender", "");
         getRoom(gender);
@@ -277,63 +284,55 @@ public class ManyChoose extends Activity implements View.OnClickListener {
     }
 
     private boolean checkAll() {
-        boolean hasEmpty = true;
-        boolean isLastAllFull = true;
-        for (int i = 0; i < editArr.size(); i++) {
-            String id = editArr.get(i).get("id").getText().toString();
-            String code = editArr.get(i).get("code").getText().toString();
-            boolean isIdEmpty = id.equals("") || id.isEmpty();
-            boolean isCodeEmpty = code.equals("") || code.isEmpty();
-
-            if (i == 0 && !isIdEmpty && !isCodeEmpty) {
-                hasEmpty = false;
-            } else if (i > 0 && isLastAllFull && !isIdEmpty && !isCodeEmpty) {
-                hasEmpty = false;
-            } else if (i > 0 && isLastAllFull && isIdEmpty && isCodeEmpty) {
-                hasEmpty = false;
-            } else {
-                hasEmpty = true;
-                break;
-            }
-
-            // 本行已满
-            if (!isIdEmpty && !isCodeEmpty) {
-                isLastAllFull = true;
-            } else {
-                break;
-            }
+        int value = translateEditText();
+        int result = getHashPosition(value);
+        if (result > 0 && result % 2 == 0) {
+            num = (result + 1) / 2 + 1;
+            updateNumText();
+            return true;
+        } else {
+            return false;
         }
-        return !hasEmpty;
     }
 
     private boolean checkEditText() {
-        boolean hasEmpty = false;
-        boolean isLastFull = true;
+        int value = translateEditText();
+        int result = getHashPosition(value);
+        if (result >= 0) {
+            if (result % 2 == 0) {
+                num = (result + 1) / 2 + 1;
+                updateNumText();
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void updateNumText() {
+        numTv.setText("总计" + num + "人");
+    }
+
+    private int translateEditText() {
+        String result = "";
         for (int i = 0; i < editArr.size(); i++) {
             String id = editArr.get(i).get("id").getText().toString();
             String code = editArr.get(i).get("code").getText().toString();
-            boolean isIdEmpty = id.equals("") || id.isEmpty();
-            boolean isCodeEmpty = code.equals("") || code.isEmpty();
-
-            // 单行 id未填写 code填写
-            if (isIdEmpty && !isCodeEmpty) {
-                hasEmpty = true;
-                break;
-            }
-
-            // 前一行不满 本行有填写
-            if (i > 0 && !isLastFull && !(isIdEmpty && isCodeEmpty)) {
-                hasEmpty = true;
-                break;
-            }
-
-            // 本行已满
-            if (!isIdEmpty && !isCodeEmpty) {
-                isLastFull = true;
+            if (id.equals("") || id.isEmpty()) {
+                result += "0";
             } else {
-                isLastFull = false;
+                result += "1";
+            }
+            if (code.equals("") || code.isEmpty()) {
+                result += "0";
+            } else {
+                result += "1";
             }
         }
-        return !hasEmpty;
+        return Integer.valueOf(result, 2);
+    }
+
+    private int getHashPosition(int value) {
+        return Arrays.binarySearch(hashCorrectArr, value);
     }
 }
