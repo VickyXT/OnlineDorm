@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageNavigationView;
@@ -82,15 +83,24 @@ public class SelectDorm extends Activity implements View.OnClickListener {
     public void onClick(View view){
 
         if(view.getId() == R.id.single_choose){
-            Intent i = new Intent(this, SingleChoose.class);
-            startActivityForResult(i,1);
+            goToChooseActivity(SingleChoose.class);
         }
 
         if(view.getId() == R.id.many_choose){
-            Intent i = new Intent(this, ManyChoose.class);
-            startActivityForResult(i,1);
+            goToChooseActivity(ManyChoose.class);
         }
 
+    }
+
+    private void goToChooseActivity(Class nextActivity) {
+        SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
+        String room = sharedPreferences.getString("room", "");
+        if (room.equals("")) {
+            Intent intent = new Intent(this, nextActivity);
+            startActivity(intent);
+        } else {
+            Toast.makeText(SelectDorm.this, "您已完成宿舍选择", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void checkLogin(){
