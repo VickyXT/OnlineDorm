@@ -68,6 +68,30 @@ public class ManyChoose extends Activity implements View.OnClickListener {
         submitBtn = (Button)findViewById(R.id.submit_btn);
         submitBtn.setOnClickListener(this);
 
+        TextView myIdTv = (TextView) findViewById(R.id.my_id);
+        TextView myCodeTv = (TextView) findViewById(R.id.my_code);
+        ImageView myImg = (ImageView) findViewById(R.id.my_img);
+        ImageView friend1Img = (ImageView) findViewById(R.id.friend1_img);
+        ImageView friend2Img = (ImageView) findViewById(R.id.friend2_img);
+        ImageView friend3Img = (ImageView) findViewById(R.id.friend3_img);
+
+        SharedPreferences sharedPreferences = (SharedPreferences)getSharedPreferences("user_info",MODE_PRIVATE);
+        myIdTv.setText(sharedPreferences.getString("stuid", ""));
+        myCodeTv.setText(sharedPreferences.getString("vcode", ""));
+        String gender = sharedPreferences.getString("gender", "");
+
+        if (gender.equals("女")) {
+            myImg.setImageResource(R.drawable.girl);
+            friend1Img.setImageResource(R.drawable.girl2);
+            friend2Img.setImageResource(R.drawable.girl2);
+            friend3Img.setImageResource(R.drawable.girl2);
+        } else {
+            myImg.setImageResource(R.drawable.boy);
+            friend1Img.setImageResource(R.drawable.boy2);
+            friend2Img.setImageResource(R.drawable.boy2);
+            friend3Img.setImageResource(R.drawable.boy2);
+        }
+
         numTv = (TextView) findViewById(R.id.roommate_num);
 
         editArr = new ArrayList<HashMap<String, EditText>>();
