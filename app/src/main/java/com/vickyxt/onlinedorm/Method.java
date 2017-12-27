@@ -35,6 +35,23 @@ public class Method {
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
+    private String errorHash(String code) {
+        String msg = code;
+        switch (code) {
+            case "4001":
+                msg = "学号不存在";
+                break;
+            case "4002":
+                msg = "密码错误";
+                break;
+            case "4009":
+                msg = "参数错误";
+                break;
+            default:
+                break;
+        }
+        return msg;
+    }
 
     public void Login(String username, String password, final MyCallback callback){
         try {
@@ -69,12 +86,12 @@ public class Method {
                         HashMap<String,String> data = com.alibaba.fastjson.JSON.parseObject(map.get("data"), new TypeReference<HashMap<String,String>>() {});
                         callback.onSuccess(data);
                     } else {
-                        callback.onError(errcode);
+                        callback.onError(errorHash(errcode));
                     }
                 }
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            callback.onError(e.toString());
         }
     }
 
@@ -111,7 +128,7 @@ public class Method {
                         HashMap<String,String> data = com.alibaba.fastjson.JSON.parseObject(map.get("data"), new TypeReference<HashMap<String,String>>() {});
                         callback.onSuccess(data);
                     } else {
-                        callback.onError(errcode);
+                        callback.onError(errorHash(errcode));
                     }
                 }
             });
@@ -153,12 +170,12 @@ public class Method {
                         HashMap<String,String> data = com.alibaba.fastjson.JSON.parseObject(map.get("data"), new TypeReference<HashMap<String,String>>() {});
                         callback.onSuccess(data);
                     } else {
-                        callback.onError(errcode);
+                        callback.onError(errorHash(errcode));
                     }
                 }
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            callback.onError(e.toString());
         }
     }
 
@@ -210,7 +227,7 @@ public class Method {
                 }
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            callback.onError(e.toString());
         }
     }
 
